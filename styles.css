@@ -1,0 +1,72 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+/* Selecting root element and Creating variables for later use*/
+:root {
+    --cell-size: 100px;
+
+    /* cell items size 90% of cell size*/
+    --mark-size: calc(var(--cell-size) * .9);
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.board {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    /* aligning grid in center */
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: var(--cell-size); /* variable used */
+    height: var(--cell-size); /* variable used */ 
+    border: 1px solid black;
+
+    display: flex;
+    /* aligning cell items in center */
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Removing top borders form first, 2nd and 3rd cell*/
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+/* Removing left borders form first, 4th and 7th cell*/
+.cell:nth-child(3n + 1){
+    border-left: none;
+}
+
+/* Removing left borders form 3rd, 6th and 9Sth cell*/
+.cell:nth-child(3n + 3){
+    border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+    border-bottom: none;
+}
+
+.cell.x::before,
+.cell.x::after{
+    content: '';
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark--size);
+    background-color: black;
+}
