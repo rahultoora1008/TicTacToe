@@ -28,8 +28,9 @@ let oTurn;
 
 startGame();
 
-resetGame.addEventListener('click', startGame, resetCounter);
-playAgain.addEventListener('click', startGame, incrementCounter);
+resetGame.addEventListener('click', startGame);
+resetGame.addEventListener('click', resetCounter);
+playAgain.addEventListener('click', startGame);
 
 function startGame() {
 	oTurn = false;
@@ -46,17 +47,9 @@ function startGame() {
 
 function resetCounter() {
 	X_WINS_COUNT = 0;
+	xWinsCount.innerHTML = X_WINS_COUNT;
 	O_WINS_COUNT = 0;
-}
-
-function incrementCounter() {
-	if (oTurn) {
-		O_WINS_COUNT++;
-		oWinsCount.innerHTML = O_WINS_COUNT;
-	} else {
-		X_WINS_COUNT++;
-		xWinsCount.innerHTML = X_WINS_COUNT;
-	}
+	oWinsCount.innerHTML = O_WINS_COUNT;
 }
 
 function handleClick(e) {
@@ -83,7 +76,13 @@ function endGame(draw) {
 		winningMsgTxtElement.innerText = 'Draw';
 	} else {
 		winningMsgTxtElement.innerText = `${oTurn ? 'O' : 'X'} Wins`;
-		incrementCounter();
+		if (oTurn) {
+			O_WINS_COUNT++;
+			oWinsCount.innerHTML = O_WINS_COUNT;
+		} else {
+			X_WINS_COUNT++;
+			xWinsCount.innerHTML = X_WINS_COUNT;
+		}
 	}
 	winningMsgElement.classList.add('show');
 }
