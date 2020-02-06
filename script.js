@@ -1,5 +1,7 @@
 const X_CLASS = 'x';
 const O_CLASS = 'o';
+let X_WINS_COUNT = 0;
+let O_WINS_COUNT = 0;
 
 const WINNING_COMBINATIONS = [
 	[ 0, 1, 2 ],
@@ -16,13 +18,18 @@ const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
 const winningMsgElement = document.getElementById('winningMessage');
 const winningMsgTxtElement = document.querySelector('[data-winning-message-text]');
-const restartButton = document.getElementById('restartButton');
+const playAgain = document.getElementById('playAgain');
+const resetGame = document.getElementById('resetGame');
+
+const xWinsCount = document.getElementById('xWinsCount');
+const oWinsCount = document.getElementById('oWinsCount');
 
 let oTurn;
 
 startGame();
 
-restartButton.addEventListener('click', startGame);
+resetGame.addEventListener('click', startGame, resetCounter);
+playAgain.addEventListener('click', startGame, incrementCounter);
 
 function startGame() {
 	oTurn = false;
@@ -33,9 +40,23 @@ function startGame() {
 		cell.addEventListener('click', handleClick, { once: true });
 	});
 	setBoardHoverClass();
-
 	// setting restart Button
 	winningMsgElement.classList.remove('show');
+}
+
+function resetCounter() {
+	X_WINS_COUNT = 0;
+	O_WINS_COUNT = 0;
+}
+
+function incrementCounter() {
+	if (oTurn) {
+		O_WINS_COUNT++;
+		oWinsCount.innerHTML = O_WINS_COUNT;
+	} else {
+		X_WINS_COUNT++;
+		xWinsCount.innerHTML = X_WINS_COUNT;
+	}
 }
 
 function handleClick(e) {
@@ -62,6 +83,7 @@ function endGame(draw) {
 		winningMsgTxtElement.innerText = 'Draw';
 	} else {
 		winningMsgTxtElement.innerText = `${oTurn ? 'O' : 'X'} Wins`;
+		incrementCounter();
 	}
 	winningMsgElement.classList.add('show');
 }

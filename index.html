@@ -5,25 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="board" id="board">
-        <!-- "data-cell" to access the cells in javascript-->
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-    </div>
-    <div class="winning-message" id="winningMessage">
-        <div data-winning-message-text></div>
-        <button id="restartButton">Restart</button>
+    <div class="container">
+        <div class="xWinsCounter"> 
+            <div class="xWinnerHead">X's Win Count</div>
+            <div class="xCount" id="xWinsCount">0</div>
+        </div>
+        <div class="oWinsCounter"> 
+            <div class="oWinnerHead">O's Win Count</div>
+            <div class="oCount" id="oWinsCount">0</div>
+        </div>
+        <div class="board" id="board">
+            <!-- "data-cell" to access the cells in javascript-->
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+
+        <div class="winning-message" id="winningMessage">
+            <div data-winning-message-text></div>
+            <div class="buttons">
+                <button id="playAgain">Play Again</button>
+                <button id="resetGame">Reset</button>
+            </div>
+            
+        </div>
     </div>
 </body>
 </html>

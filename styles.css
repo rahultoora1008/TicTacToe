@@ -17,8 +17,34 @@ body {
 	overflow: hidden;
 }
 
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.xWinsCounter,
+.oWinsCounter {
+	font: 50px solid black;
+	font-family: Acme;
+	display: flex;
+	margin: 20px;
+	flex-direction: column;
+	justify-content: ;
+	align-items: center;
+}
+
+.xCount,
+.oCount {
+	margin-top: 30vh;
+}
+
+.oWinsCounter {
+	order: 1;
+}
+
 .board {
-	width: 100vw;
+	width: 40vw;
 	height: 100vh;
 	display: grid;
 	/* aligning grid in center */
@@ -151,6 +177,7 @@ body {
 }
 
 .winning-message button {
+	margin: 10px;
 	font-size: 3rem;
 	background-color: white;
 	border: 1px solid black;
